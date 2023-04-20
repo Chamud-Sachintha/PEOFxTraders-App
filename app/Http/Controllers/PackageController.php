@@ -186,7 +186,7 @@ class PackageController extends Controller
                 TotalUserEarning::where(['user_id' => $getPrimaryLevelAgent[0]->id])
                                 ->update([
                                     'total_earnings' => $primary->total_earnings + $getSumOfComission,
-                                    'total_without_deduct' => $primary->total_earnings + $getSumOfComission
+                                    'total_without_deduct' => $primary->total_without_deduct + $getSumOfComission
                                 ]);                
                 
                 ReferalComission::where(['id' => $getRefUid->id])->update(['status' => 'I']);
@@ -215,7 +215,7 @@ class PackageController extends Controller
                 TotalUserEarning::where(['user_id' => $getSecondaryLevelAgent[0]->id])
                                 ->update([
                                     'total_earnings' => $helper->getUserCurrentEarning($getSecondaryLevelAgent[0]->id) + $getSumOfComission,
-                                    'total_without_deduct' => $helper->getUserCurrentEarning($getSecondaryLevelAgent[0]->id) + $getSumOfComission
+                                    'total_without_deduct' => $helper->getTotalWithoutDeduct($getSecondaryLevelAgent[0]->id) + $getSumOfComission
                                 ]);
                 
                 ReferalComission::where(['id' => $getRefId->id])->update(['status' => 'I']);
@@ -708,7 +708,7 @@ class PackageController extends Controller
                     TotalUserEarning::where(['user_id' => $getPrimaryLevelAgent[0]->id])
                                     ->update([
                                         'total_earnings' => $primary->total_earnings + $getSumOfComission,
-                                        'total_without_deduct' => $primary->total_earnings + $getSumOfComission
+                                        'total_without_deduct' => $primary->total_without_deduct + $getSumOfComission
                                     ]);                
                     
                     ReferalComission::where(['id' => $getRefUid->id])->update(['status' => 'I']);
@@ -737,7 +737,7 @@ class PackageController extends Controller
                     TotalUserEarning::where(['user_id' => $getSecondaryLevelAgent[0]->id])
                                     ->update([
                                         'total_earnings' => $helper->getUserCurrentEarning($getSecondaryLevelAgent[0]->id) + $getSumOfComission,
-                                        'total_without_deduct' => $helper->getUserCurrentEarning($getSecondaryLevelAgent[0]->id) + $getSumOfComission
+                                        'total_without_deduct' => $helper->getTotalWithoutDeduct($getSecondaryLevelAgent[0]->id) + $getSumOfComission
                                     ]);
                     
                     ReferalComission::where(['id' => $getRefId->id])->update(['status' => 'I']);

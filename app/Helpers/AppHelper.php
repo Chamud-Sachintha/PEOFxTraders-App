@@ -71,6 +71,11 @@ class AppHelper {
         return $package;
     }
 
+    public function getTotalWithoutDeduct($userId) {
+        $getCurrentTotalWithoutDeductEarning = TotalUserEarning::where(['user_id' => $user_id])->first();
+        return $getCurrentTotalWithoutDeductEarning->total_without_deduct;
+    }
+
     public function getEachReferalLineIDsByUserId($userId) {
 
         $left = [];
